@@ -94,5 +94,33 @@ const {
         });
       })();
     </script>
+    <script is:inline>
+      (() => {
+        const drawer = document.querySelector("[data-nav-drawer]");
+        const openButton = document.querySelector("[data-nav-open]");
+        const closeTargets = document.querySelectorAll("[data-nav-close], [data-nav-link]");
+
+        if (!drawer || !openButton) return;
+
+        const setOpen = (isOpen) => {
+          drawer.classList.toggle("hidden", !isOpen);
+          openButton.setAttribute("aria-expanded", String(isOpen));
+          document.body.style.overflow = isOpen ? "hidden" : "";
+        };
+
+        openButton.addEventListener("click", () => setOpen(true));
+        closeTargets.forEach((target) => {
+          target.addEventListener("click", () => setOpen(false));
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") setOpen(false);
+        });
+
+        window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
+          if (event.matches) setOpen(false);
+        });
+      })();
+    </script>
   </body>
 </html>

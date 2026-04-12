@@ -32,21 +32,21 @@ const descriptors = [
 
 const experiences = [
   {
-    period: "2025 - Present",
+    period: "Jan 2025 - Present",
     role: "Frontend Developer",
     company: "Placeholder Studio",
     detail:
       "Built landing pages, dashboards, and reusable UI components with a focus on accessibility and fast delivery.",
   },
   {
-    period: "2024 - 2025",
+    period: "Aug 2024 - Dec 2024",
     role: "Web Developer Intern",
     company: "Example Digital Lab",
     detail:
       "Supported client projects, converted designs into responsive pages, and improved API integration workflows.",
   },
   {
-    period: "2023 - 2024",
+    period: "Feb 2023 - Jul 2024",
     role: "Freelance Developer",
     company: "Independent Projects",
     detail:
@@ -140,9 +140,9 @@ const secondaryButton =
   </a>
 
   <header class="sticky top-0 z-10 border-b border-[var(--color-line)] bg-[rgb(var(--color-bg-rgb)/0.9)] backdrop-blur-md">
-    <nav class={`${shell} flex min-h-[72px] items-center justify-between gap-4 py-4 max-md:flex-col max-md:items-start`} aria-label="Main navigation">
+    <nav class={`${shell} flex min-h-[72px] items-center justify-between gap-4 py-4`} aria-label="Main navigation">
       <a class="text-lg font-extrabold text-[var(--color-text)]" href="#home" aria-label="Go to home">Portfolio.</a>
-      <div class="flex flex-wrap items-center justify-end gap-1 max-md:justify-start">
+      <div class="hidden items-center justify-end gap-1 md:flex">
         {navItems.map((item) => (
           <a
             class="rounded-md px-3 py-2 text-sm font-bold text-[var(--color-muted)] hover:bg-[var(--color-surface-strong)] hover:text-[var(--color-text)]"
@@ -162,12 +162,75 @@ const secondaryButton =
           <span data-theme-label>Light</span>
         </button>
       </div>
+      <button
+        class="inline-flex min-h-10 items-center gap-2 rounded-lg border border-[var(--color-line)] bg-[var(--color-surface)] px-3 py-2 text-sm font-extrabold text-[var(--color-text)] transition hover:bg-[var(--color-surface-strong)] md:hidden"
+        type="button"
+        data-nav-open
+        aria-controls="mobile-navigation"
+        aria-expanded="false"
+      >
+        <span class="grid gap-1" aria-hidden="true">
+          <span class="block h-0.5 w-5 rounded-full bg-[var(--color-text)]"></span>
+          <span class="block h-0.5 w-5 rounded-full bg-[var(--color-text)]"></span>
+          <span class="block h-0.5 w-5 rounded-full bg-[var(--color-text)]"></span>
+        </span>
+        Menu
+      </button>
     </nav>
   </header>
 
+  <div class="fixed inset-0 z-50 hidden md:hidden" id="mobile-navigation" data-nav-drawer>
+    <button
+      class="absolute inset-0 bg-[rgb(0_0_0/0.45)]"
+      type="button"
+      data-nav-close
+      aria-label="Close navigation"
+    ></button>
+    <aside
+      class="absolute right-0 top-0 flex h-full w-[min(360px,calc(100%_-_2rem))] flex-col border-l border-[var(--color-line)] bg-[var(--color-surface)] p-5 text-[var(--color-text)] shadow-[var(--shadow-lift)]"
+      aria-label="Mobile navigation"
+      data-nav-panel
+    >
+      <div class="flex items-center justify-between gap-4">
+        <a class="text-lg font-extrabold" href="#home" data-nav-link>Portfolio.</a>
+        <button
+          class="inline-flex min-h-10 items-center justify-center rounded-lg border border-[var(--color-line)] px-3 py-2 font-extrabold hover:bg-[var(--color-surface-strong)]"
+          type="button"
+          data-nav-close
+          aria-label="Close navigation"
+        >
+          Close
+        </button>
+      </div>
+
+      <div class="mt-8 grid gap-2">
+        {navItems.map((item) => (
+          <a
+            class="rounded-lg px-3 py-3 text-lg font-extrabold text-[var(--color-text)] hover:bg-[var(--color-surface-strong)]"
+            href={item.href}
+            data-nav-link
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <button
+        class="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[var(--color-line)] bg-[var(--color-surface-strong)] px-4 py-3 font-extrabold text-[var(--color-text)]"
+        type="button"
+        data-theme-toggle
+        aria-pressed="false"
+      >
+        <span class="h-2.5 w-2.5 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
+        <span>Theme:</span>
+        <span data-theme-label>Light</span>
+      </button>
+    </aside>
+  </div>
+
   <main id="main">
     <section id="home" class={`${section} pt-12 md:pt-20`}>
-      <div class={`${shell} grid items-center gap-12 lg:grid-cols-[1.08fr_0.72fr]`}>
+      <div class={`${shell} grid items-center gap-8 md:gap-12 lg:grid-cols-[1.08fr_0.72fr]`}>
         <div class="max-w-3xl">
           <p class={eyebrow}>Available for web projects</p>
           <h1 class="max-w-3xl text-3xl font-extrabold leading-tight text-[var(--color-text)] sm:text-4xl lg:text-6xl">
@@ -199,9 +262,9 @@ const secondaryButton =
           </ul>
         </div>
 
-        <figure>
+        <figure class="mx-auto w-full max-w-[320px] sm:max-w-sm lg:max-w-none">
           <img
-            class="aspect-[4/5] w-full rounded-lg object-cover shadow-[var(--shadow-lift)]"
+            class="aspect-[4/3] w-full rounded-lg object-cover shadow-[var(--shadow-lift)] lg:aspect-[4/5]"
             src="Engineer in the code chaos.png"
             alt="Developer desk with laptop and code editor"
             width="900"
@@ -262,17 +325,32 @@ const secondaryButton =
           <h2 class={heading}>A timeline of steady practice and shipped work.</h2>
         </div>
 
-        <div class="grid gap-4 border-l-[3px] border-[var(--color-brand)] pl-5">
-          {experiences.map((item) => (
-            <article class={`${card} relative grid gap-4 p-5 before:absolute before:-left-[30px] before:top-6 before:h-4 before:w-4 before:rounded-full before:border-[3px] before:border-[var(--color-bg)] before:bg-[var(--color-accent)] md:grid-cols-[180px_1fr]`}>
-              <time class="font-black text-[var(--color-brand-strong)]">{item.period}</time>
-              <div>
-                <h3 class="text-xl font-extrabold leading-tight text-[var(--color-text)]">{item.role}</h3>
-                <p class="mt-2 font-extrabold text-[var(--color-text)]">{item.company}</p>
-                <p class="mt-2 text-[var(--color-muted)]">{item.detail}</p>
-              </div>
-            </article>
-          ))}
+        <div class="relative grid gap-6 pl-8 before:absolute before:left-3 before:top-0 before:h-full before:w-[3px] before:bg-[var(--color-brand)] md:gap-8 md:pl-0 md:before:left-1/2 md:before:-translate-x-1/2">
+          {experiences.map((item, index) => {
+            const isLeft = index % 2 === 0;
+            const cardPosition = isLeft ? "md:col-start-1 md:text-right" : "md:col-start-3";
+            const connectorPosition = isLeft ? "md:right-1/2 md:mr-2" : "md:left-1/2 md:ml-2";
+
+            return (
+              <article class="relative grid items-center gap-4 md:grid-cols-[1fr_64px_1fr]">
+                <div class={`${card} ${cardPosition} p-5`}>
+                  <time class="font-black text-[var(--color-brand-strong)]">{item.period}</time>
+                  <h3 class="mt-3 text-xl font-extrabold leading-tight text-[var(--color-text)]">{item.role}</h3>
+                  <p class="mt-2 font-extrabold text-[var(--color-text)]">{item.company}</p>
+                  <p class="mt-2 text-[var(--color-muted)]">{item.detail}</p>
+                </div>
+
+                <span
+                  class="absolute -left-[31px] top-6 h-4 w-4 rounded-full border-[3px] border-[var(--color-bg)] bg-[var(--color-accent)] md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
+                  aria-hidden="true"
+                ></span>
+                <span
+                  class={`hidden md:block md:absolute md:top-1/2 md:h-[3px] md:w-8 md:-translate-y-1/2 md:bg-[var(--color-brand)] ${connectorPosition}`}
+                  aria-hidden="true"
+                ></span>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -333,31 +411,60 @@ const secondaryButton =
     </section>
 
     <section id="contact" class={`${section} bg-[var(--color-contact-bg)] text-[var(--color-contact-text)]`}>
-      <div class={`${shell} grid items-center gap-8 lg:grid-cols-[1fr_0.55fr]`}>
-        <div>
+      <div class={`${shell} grid items-start gap-8 lg:grid-cols-[1fr_420px]`}>
+        <div class="max-w-3xl">
           <p class={`${eyebrow} border-[var(--color-contact-line)]`}>Get In Touch</p>
-          <h2 class="max-w-3xl text-3xl font-extrabold leading-tight text-[var(--color-contact-text)] sm:text-4xl lg:text-5xl">
+          <h2 class="max-w-3xl text-3xl font-extrabold leading-tight text-[var(--color-contact-text)] sm:text-4xl">
             Have an idea, role, or collaboration in mind?
           </h2>
-          <p class="mt-5 max-w-2xl text-[var(--color-contact-muted)]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Send a quick message and I will reply with the next
-            practical step.
+          <p class="mt-5 max-w-2xl text-base text-[var(--color-contact-muted)] sm:text-lg">
+            Send a short message about what you want to build, improve, or launch. I will reply with a clear next step
+            and a practical way to move forward.
           </p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="rounded-full border border-[var(--color-contact-line)] bg-[var(--color-contact-panel)] px-3 py-1 text-sm font-extrabold">
+              Open for freelance
+            </span>
+            <span class="rounded-full border border-[var(--color-contact-line)] bg-[var(--color-contact-panel)] px-3 py-1 text-sm font-extrabold">
+              Remote friendly
+            </span>
+          </div>
         </div>
 
-        <div class="grid gap-4 rounded-lg border border-[var(--color-contact-line)] bg-[var(--color-contact-panel)] p-5" aria-label="Contact information">
-          <a class={primaryButton} href="/resume-placeholder.pdf" download>Download Resume PDF</a>
-          <a class="font-extrabold text-[var(--color-contact-text)] underline decoration-2 underline-offset-4" href="mailto:hello@example.com">
-            hello@example.com
-          </a>
+        <div class="grid gap-4 rounded-lg border border-[var(--color-contact-line)] bg-[var(--color-contact-panel)] p-4 shadow-[var(--shadow-card)] sm:p-5" aria-label="Contact information">
           <a
-            class="font-extrabold text-[var(--color-contact-text)] underline decoration-2 underline-offset-4"
+            class="inline-flex min-h-10 w-full items-center justify-center rounded-lg border border-transparent bg-[var(--color-brand)] px-3 py-2 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-brand-strong)] sm:min-h-11 sm:px-4 sm:py-3 sm:text-base"
+            href="/resume-placeholder.pdf"
+            download
+          >
+            Download Resume PDF
+          </a>
+
+          <a
+            class="rounded-lg border border-[var(--color-contact-line)] px-4 py-3 transition hover:bg-[var(--color-surface-strong)]"
+            href="mailto:hello@example.com"
+          >
+            <span class="block text-xs font-black uppercase tracking-wide text-[var(--color-contact-muted)]">Email</span>
+            <span class="mt-1 block font-extrabold text-[var(--color-contact-text)] underline decoration-2 underline-offset-4">
+              hello@example.com
+            </span>
+          </a>
+
+          <a
+            class="rounded-lg border border-[var(--color-contact-line)] px-4 py-3 transition hover:bg-[var(--color-surface-strong)]"
             href="https://wa.me/6281234567890"
             target="_blank"
             rel="noreferrer"
           >
-            WhatsApp: +62 812 3456 7890
+            <span class="block text-xs font-black uppercase tracking-wide text-[var(--color-contact-muted)]">WhatsApp</span>
+            <span class="mt-1 block font-extrabold text-[var(--color-contact-text)] underline decoration-2 underline-offset-4">
+              +62 812 3456 7890
+            </span>
           </a>
+
+          <p class="text-sm text-[var(--color-contact-muted)]">
+            Prefer email for project briefs, WhatsApp for quick availability checks.
+          </p>
         </div>
       </div>
     </section>
