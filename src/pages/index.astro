@@ -121,9 +121,9 @@ const eyebrow =
 const heading =
   "max-w-3xl text-3xl font-extrabold leading-tight text-[var(--color-text)] sm:text-4xl lg:text-5xl";
 const card =
-  "rounded-lg border border-[var(--color-line)] bg-[var(--color-surface)] shadow-[var(--shadow-card)]";
+  "motion-card rounded-lg border border-[var(--color-line)] bg-[var(--color-surface)] shadow-[var(--shadow-card)]";
 const primaryButton =
-  "inline-flex min-h-11 items-center justify-center rounded-lg border border-transparent bg-[var(--color-brand)] px-4 py-3 font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-brand-strong)] max-sm:w-full";
+  "motion-sheen inline-flex min-h-11 items-center justify-center rounded-lg border border-transparent bg-[var(--color-brand)] px-4 py-3 font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-brand-strong)] max-sm:w-full";
 const secondaryButton =
   "inline-flex min-h-11 items-center justify-center rounded-lg border border-[var(--color-line)] bg-[var(--color-surface)] px-4 py-3 font-extrabold text-[var(--color-text)] transition hover:-translate-y-0.5 hover:bg-[var(--color-surface-strong)] max-sm:w-full";
 ---
@@ -229,24 +229,27 @@ const secondaryButton =
   </div>
 
   <main id="main">
-    <section id="home" class={`${section} pt-12 md:pt-20`}>
-      <div class={`${shell} grid items-center gap-8 md:gap-12 lg:grid-cols-[1.08fr_0.72fr]`}>
+    <section id="home" class={`${section} relative overflow-hidden pt-12 md:pt-20`}>
+      <div class="motion-steam" aria-hidden="true">
+        {Array.from({ length: 22 }).map(() => <span></span>)}
+      </div>
+      <div class={`${shell} relative z-[1] grid items-center gap-8 md:gap-12 lg:grid-cols-[1.08fr_0.72fr]`}>
         <div class="max-w-3xl">
-          <p class={eyebrow}>Available for web projects</p>
-          <h1 class="max-w-3xl text-3xl font-extrabold leading-tight text-[var(--color-text)] sm:text-4xl lg:text-6xl">
+          <p class={`${eyebrow} motion-fade-up`}>Available for web projects</p>
+          <h1 class="motion-fade-up max-w-3xl text-3xl font-extrabold leading-tight text-[var(--color-text)] sm:text-4xl lg:text-6xl">
             Hi, I am Your Name, a developer who builds fast and useful web experiences.
           </h1>
-          <p class="mt-5 max-w-2xl text-base text-[var(--color-muted)] sm:text-lg">
+          <p class="motion-fade-up motion-delay-1 mt-5 max-w-2xl text-base text-[var(--color-muted)] sm:text-lg">
             I turn ideas into clean interfaces, reliable systems, and static-first websites that feel quick from the first click.
           </p>
-          <p class="mt-5 inline-flex border-l-4 border-[var(--color-accent)] bg-[var(--color-surface)] px-4 py-3 text-base font-extrabold text-[var(--color-text)] shadow-[var(--shadow-lift)]">
-            Ship with clarity. Scale with care.
+          <p class="motion-fade-up motion-delay-2 mt-5 inline-flex border-l-4 border-[var(--color-accent)] bg-[var(--color-surface)] px-4 py-3 text-base font-extrabold text-[var(--color-text)] shadow-[var(--shadow-lift)]">
+            <span class="motion-typewriter">Ship with clarity. Scale with care.</span>
           </p>
-          <div class="mt-8 flex flex-wrap gap-3" aria-label="Primary actions">
+          <div class="motion-fade-up motion-delay-3 mt-8 flex flex-wrap gap-3" aria-label="Primary actions">
             <a class={primaryButton} href="#projects">View Projects</a>
             <a class={secondaryButton} href="#contact">Get In Touch</a>
           </div>
-          <ul class="mt-6 flex flex-wrap gap-3" aria-label="Social media links">
+          <ul class="motion-fade-up motion-delay-4 mt-6 flex flex-wrap gap-3" aria-label="Social media links">
             {socials.map((social) => (
               <li>
                 <a
@@ -262,9 +265,9 @@ const secondaryButton =
           </ul>
         </div>
 
-        <figure class="mx-auto w-full max-w-[320px] sm:max-w-sm lg:max-w-none">
+        <figure class="motion-fade-scale motion-delay-2 mx-auto w-full max-w-[320px] sm:max-w-sm lg:max-w-none">
           <img
-            class="aspect-[4/3] w-full rounded-lg object-cover shadow-[var(--shadow-lift)] lg:aspect-[4/5]"
+            class="motion-float aspect-[4/3] w-full rounded-lg object-cover shadow-[var(--shadow-lift)] lg:aspect-[4/5]"
             src="Engineer in the code chaos.png"
             alt="Developer desk with laptop and code editor"
             width="900"
@@ -277,7 +280,7 @@ const secondaryButton =
       </div>
     </section>
 
-    <section id="about" class={`${section} bg-[var(--color-surface)]`}>
+    <section id="about" class={`${section} motion-reveal bg-[var(--color-surface)]`}>
       <div class={shell}>
         <div class="mb-8">
           <p class={eyebrow}>About Me</p>
@@ -318,14 +321,14 @@ const secondaryButton =
       </div>
     </section>
 
-    <section id="experience" class={section}>
+    <section id="experience" class={`${section} motion-reveal`}>
       <div class={shell}>
         <div class="mb-8">
           <p class={eyebrow}>Work Experience</p>
           <h2 class={heading}>A timeline of steady practice and shipped work.</h2>
         </div>
 
-        <div class="relative grid gap-6 pl-8 before:absolute before:left-3 before:top-0 before:h-full before:w-[3px] before:bg-[var(--color-brand)] md:gap-8 md:pl-0 md:before:left-1/2 md:before:-translate-x-1/2">
+        <div class="motion-rail relative grid gap-6 pl-8 before:absolute before:left-3 before:top-0 before:h-full before:w-[3px] before:bg-[var(--color-brand)] md:gap-8 md:pl-0 md:before:left-1/2 md:before:-translate-x-1/2">
           {experiences.map((item, index) => {
             const isLeft = index % 2 === 0;
             const cardPosition = isLeft ? "md:col-start-1 md:text-right" : "md:col-start-3";
@@ -341,7 +344,7 @@ const secondaryButton =
                 </div>
 
                 <span
-                  class="absolute -left-[31px] top-6 h-4 w-4 rounded-full border-[3px] border-[var(--color-bg)] bg-[var(--color-accent)] md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
+                  class="motion-dot absolute -left-[31px] top-6 h-4 w-4 rounded-full border-[3px] border-[var(--color-bg)] bg-[var(--color-accent)] md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
                   aria-hidden="true"
                 ></span>
                 <span
@@ -355,7 +358,7 @@ const secondaryButton =
       </div>
     </section>
 
-    <section id="projects" class={`${section} bg-[var(--color-surface)]`}>
+    <section id="projects" class={`${section} motion-reveal bg-[var(--color-surface)]`}>
       <div class={shell}>
         <div class="mb-8">
           <p class={eyebrow}>Project Experience</p>
@@ -386,7 +389,7 @@ const secondaryButton =
       </div>
     </section>
 
-    <section id="skills" class={section}>
+    <section id="skills" class={`${section} motion-reveal`}>
       <div class={shell}>
         <div class="mb-8">
           <p class={eyebrow}>Technical Skills</p>
@@ -410,7 +413,7 @@ const secondaryButton =
       </div>
     </section>
 
-    <section id="contact" class={`${section} bg-[var(--color-contact-bg)] text-[var(--color-contact-text)]`}>
+    <section id="contact" class={`${section} motion-reveal bg-[var(--color-contact-bg)] text-[var(--color-contact-text)]`}>
       <div class={`${shell} grid items-start gap-8 lg:grid-cols-[1fr_420px]`}>
         <div class="max-w-3xl">
           <p class={`${eyebrow} border-[var(--color-contact-line)]`}>Get In Touch</p>
@@ -433,7 +436,7 @@ const secondaryButton =
 
         <div class="grid gap-4 rounded-lg border border-[var(--color-contact-line)] bg-[var(--color-contact-panel)] p-4 shadow-[var(--shadow-card)] sm:p-5" aria-label="Contact information">
           <a
-            class="inline-flex min-h-10 w-full items-center justify-center rounded-lg border border-transparent bg-[var(--color-brand)] px-3 py-2 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-brand-strong)] sm:min-h-11 sm:px-4 sm:py-3 sm:text-base"
+            class="motion-sheen inline-flex min-h-10 w-full items-center justify-center rounded-lg border border-transparent bg-[var(--color-brand)] px-3 py-2 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-brand-strong)] sm:min-h-11 sm:px-4 sm:py-3 sm:text-base"
             href="/resume-placeholder.pdf"
             download
           >
