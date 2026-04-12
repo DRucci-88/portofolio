@@ -117,15 +117,15 @@ const navItems = [
 const shell = "mx-auto w-[min(1120px,calc(100%_-_2rem))]";
 const section = "py-16 md:py-24";
 const eyebrow =
-  "mb-4 w-fit rounded-full border border-[#d9e2de] bg-[#d7f2df] px-3 py-1 text-sm font-extrabold text-[#005e5b]";
+  "mb-4 w-fit rounded-full border border-[var(--color-line)] bg-[var(--color-accent-soft)] px-3 py-1 text-sm font-extrabold text-[var(--color-brand-strong)]";
 const heading =
-  "max-w-3xl text-3xl font-extrabold leading-tight text-[#18211f] sm:text-4xl lg:text-5xl";
+  "max-w-3xl text-3xl font-extrabold leading-tight text-[var(--color-text)] sm:text-4xl lg:text-5xl";
 const card =
-  "rounded-lg border border-[#d9e2de] bg-white shadow-[0_10px_28px_rgb(24_33_31_/_7%)]";
+  "rounded-lg border border-[var(--color-line)] bg-[var(--color-surface)] shadow-[var(--shadow-card)]";
 const primaryButton =
-  "inline-flex min-h-11 items-center justify-center rounded-lg border border-transparent bg-[#007c78] px-4 py-3 font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[#005e5b] max-sm:w-full";
+  "inline-flex min-h-11 items-center justify-center rounded-lg border border-transparent bg-[var(--color-brand)] px-4 py-3 font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-brand-strong)] max-sm:w-full";
 const secondaryButton =
-  "inline-flex min-h-11 items-center justify-center rounded-lg border border-[#d9e2de] bg-white px-4 py-3 font-extrabold text-[#18211f] transition hover:-translate-y-0.5 hover:bg-[#eff4f1] max-sm:w-full";
+  "inline-flex min-h-11 items-center justify-center rounded-lg border border-[var(--color-line)] bg-[var(--color-surface)] px-4 py-3 font-extrabold text-[var(--color-text)] transition hover:-translate-y-0.5 hover:bg-[var(--color-surface-strong)] max-sm:w-full";
 ---
 
 <Layout
@@ -133,24 +133,34 @@ const secondaryButton =
   description="A fast Astro portfolio for a software developer, including work, projects, skills, and contact details."
 >
   <a
-    class="fixed left-4 top-4 z-20 -translate-y-40 rounded-md bg-[#18211f] px-4 py-3 text-white focus:translate-y-0"
+    class="fixed left-4 top-4 z-20 -translate-y-40 rounded-md bg-[var(--color-inverse)] px-4 py-3 text-[var(--color-inverse-text)] focus:translate-y-0"
     href="#main"
   >
     Skip to content
   </a>
 
-  <header class="sticky top-0 z-10 border-b border-[#d9e2de]/80 bg-[#f6f8f7]/90 backdrop-blur-md">
+  <header class="sticky top-0 z-10 border-b border-[var(--color-line)] bg-[rgb(var(--color-bg-rgb)/0.9)] backdrop-blur-md">
     <nav class={`${shell} flex min-h-[72px] items-center justify-between gap-4 py-4 max-md:flex-col max-md:items-start`} aria-label="Main navigation">
-      <a class="text-lg font-extrabold text-[#18211f]" href="#home" aria-label="Go to home">Portfolio.</a>
+      <a class="text-lg font-extrabold text-[var(--color-text)]" href="#home" aria-label="Go to home">Portfolio.</a>
       <div class="flex flex-wrap items-center justify-end gap-1 max-md:justify-start">
         {navItems.map((item) => (
           <a
-            class="rounded-md px-3 py-2 text-sm font-bold text-[#5b6763] hover:bg-[#eff4f1] hover:text-[#18211f]"
+            class="rounded-md px-3 py-2 text-sm font-bold text-[var(--color-muted)] hover:bg-[var(--color-surface-strong)] hover:text-[var(--color-text)]"
             href={item.href}
           >
             {item.label}
           </a>
         ))}
+        <button
+          class="inline-flex min-h-10 items-center gap-2 rounded-lg border border-[var(--color-line)] bg-[var(--color-surface)] px-3 py-2 text-sm font-extrabold text-[var(--color-text)] transition hover:bg-[var(--color-surface-strong)]"
+          type="button"
+          data-theme-toggle
+          aria-pressed="false"
+        >
+          <span class="h-2.5 w-2.5 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
+          <span>Theme:</span>
+          <span data-theme-label>Light</span>
+        </button>
       </div>
     </nav>
   </header>
@@ -160,13 +170,13 @@ const secondaryButton =
       <div class={`${shell} grid items-center gap-12 lg:grid-cols-[1.08fr_0.72fr]`}>
         <div class="max-w-3xl">
           <p class={eyebrow}>Available for web projects</p>
-          <h1 class="max-w-4xl text-4xl font-extrabold leading-tight text-[#18211f] sm:text-5xl lg:text-7xl">
+          <h1 class="max-w-3xl text-3xl font-extrabold leading-tight text-[var(--color-text)] sm:text-4xl lg:text-6xl">
             Hi, I am Your Name, a developer who builds fast and useful web experiences.
           </h1>
-          <p class="mt-6 max-w-2xl text-lg text-[#5b6763]">
+          <p class="mt-5 max-w-2xl text-base text-[var(--color-muted)] sm:text-lg">
             I turn ideas into clean interfaces, reliable systems, and static-first websites that feel quick from the first click.
           </p>
-          <p class="mt-6 inline-flex border-l-4 border-[#e85d4f] bg-white px-4 py-3 text-lg font-extrabold text-[#18211f] shadow-[0_18px_42px_rgb(24_33_31_/_10%)]">
+          <p class="mt-5 inline-flex border-l-4 border-[var(--color-accent)] bg-[var(--color-surface)] px-4 py-3 text-base font-extrabold text-[var(--color-text)] shadow-[var(--shadow-lift)]">
             Ship with clarity. Scale with care.
           </p>
           <div class="mt-8 flex flex-wrap gap-3" aria-label="Primary actions">
@@ -177,7 +187,7 @@ const secondaryButton =
             {socials.map((social) => (
               <li>
                 <a
-                  class="font-extrabold text-[#005e5b] underline decoration-2 underline-offset-4"
+                  class="font-extrabold text-[var(--color-brand-strong)] underline decoration-2 underline-offset-4"
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
@@ -191,20 +201,20 @@ const secondaryButton =
 
         <figure>
           <img
-            class="aspect-[4/5] w-full rounded-lg object-cover shadow-[0_18px_42px_rgb(24_33_31_/_10%)]"
-            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=75"
+            class="aspect-[4/5] w-full rounded-lg object-cover shadow-[var(--shadow-lift)]"
+            src="Engineer in the code chaos.png"
             alt="Developer desk with laptop and code editor"
             width="900"
             height="1125"
             decoding="async"
             fetchpriority="high"
           />
-          <figcaption class="mt-3 text-sm text-[#5b6763]">Focused on Astro, clean UI, and fast delivery.</figcaption>
+          <figcaption class="mt-3 text-sm text-[var(--color-muted)]">Focused on Astro, clean UI, and fast delivery.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="about" class={`${section} bg-white`}>
+    <section id="about" class={`${section} bg-[var(--color-surface)]`}>
       <div class={shell}>
         <div class="mb-8">
           <p class={eyebrow}>About Me</p>
@@ -212,7 +222,7 @@ const secondaryButton =
         </div>
 
         <div class="grid items-start gap-8 lg:grid-cols-[1fr_0.8fr]">
-          <div class="text-lg text-[#5b6763]">
+          <div class="text-lg text-[var(--color-muted)]">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra, sem in porta elementum, erat
               massa eleifend turpis, sed dictum risus mi vitae arcu. I enjoy shaping digital products from rough notes
@@ -227,8 +237,8 @@ const secondaryButton =
           <div class="grid gap-4 sm:grid-cols-2" aria-label="Developer stats">
             {stats.map((stat) => (
               <article class={`${card} min-h-32 p-5`}>
-                <strong class="block text-4xl leading-none text-[#e85d4f]">{stat.value}</strong>
-                <span class="mt-3 block font-bold text-[#5b6763]">{stat.label}</span>
+                <strong class="block text-4xl leading-none text-[var(--color-accent)]">{stat.value}</strong>
+                <span class="mt-3 block font-bold text-[var(--color-muted)]">{stat.label}</span>
               </article>
             ))}
           </div>
@@ -236,9 +246,9 @@ const secondaryButton =
 
         <div class="mt-4 grid gap-4 md:grid-cols-3">
           {descriptors.map((item) => (
-            <article class={`${card} bg-[#fbfdfc] p-5`}>
-              <h3 class="text-xl font-extrabold leading-tight text-[#18211f]">{item.title}</h3>
-              <p class="mt-3 text-[#5b6763]">{item.text}</p>
+            <article class={`${card} bg-[var(--color-surface-muted)] p-5`}>
+              <h3 class="text-xl font-extrabold leading-tight text-[var(--color-text)]">{item.title}</h3>
+              <p class="mt-3 text-[var(--color-muted)]">{item.text}</p>
             </article>
           ))}
         </div>
@@ -252,14 +262,14 @@ const secondaryButton =
           <h2 class={heading}>A timeline of steady practice and shipped work.</h2>
         </div>
 
-        <div class="grid gap-4 border-l-[3px] border-[#007c78] pl-5">
+        <div class="grid gap-4 border-l-[3px] border-[var(--color-brand)] pl-5">
           {experiences.map((item) => (
-            <article class={`${card} relative grid gap-4 p-5 before:absolute before:-left-[30px] before:top-6 before:h-4 before:w-4 before:rounded-full before:border-[3px] before:border-[#f6f8f7] before:bg-[#e85d4f] md:grid-cols-[180px_1fr]`}>
-              <time class="font-black text-[#005e5b]">{item.period}</time>
+            <article class={`${card} relative grid gap-4 p-5 before:absolute before:-left-[30px] before:top-6 before:h-4 before:w-4 before:rounded-full before:border-[3px] before:border-[var(--color-bg)] before:bg-[var(--color-accent)] md:grid-cols-[180px_1fr]`}>
+              <time class="font-black text-[var(--color-brand-strong)]">{item.period}</time>
               <div>
-                <h3 class="text-xl font-extrabold leading-tight text-[#18211f]">{item.role}</h3>
-                <p class="mt-2 font-extrabold text-[#18211f]">{item.company}</p>
-                <p class="mt-2 text-[#5b6763]">{item.detail}</p>
+                <h3 class="text-xl font-extrabold leading-tight text-[var(--color-text)]">{item.role}</h3>
+                <p class="mt-2 font-extrabold text-[var(--color-text)]">{item.company}</p>
+                <p class="mt-2 text-[var(--color-muted)]">{item.detail}</p>
               </div>
             </article>
           ))}
@@ -267,7 +277,7 @@ const secondaryButton =
       </div>
     </section>
 
-    <section id="projects" class={`${section} bg-white`}>
+    <section id="projects" class={`${section} bg-[var(--color-surface)]`}>
       <div class={shell}>
         <div class="mb-8">
           <p class={eyebrow}>Project Experience</p>
@@ -276,7 +286,7 @@ const secondaryButton =
 
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <article class={`${card} overflow-hidden bg-[#fbfdfc]`}>
+            <article class={`${card} overflow-hidden bg-[var(--color-surface-muted)]`}>
               <img
                 class="aspect-[3/2] w-full object-cover"
                 src={project.image}
@@ -287,10 +297,10 @@ const secondaryButton =
                 decoding="async"
               />
               <div class="p-5">
-                <p class="mb-3 text-sm font-black text-[#e85d4f]">{project.tools}</p>
-                <h3 class="text-xl font-extrabold leading-tight text-[#18211f]">{project.title}</h3>
-                <p class="mt-3 text-[#5b6763]">{project.description}</p>
-                <p class="mt-3 text-[#5b6763]"><strong>Goals and achievement:</strong> {project.goals}</p>
+                <p class="mb-3 text-sm font-black text-[var(--color-accent)]">{project.tools}</p>
+                <h3 class="text-xl font-extrabold leading-tight text-[var(--color-text)]">{project.title}</h3>
+                <p class="mt-3 text-[var(--color-muted)]">{project.description}</p>
+                <p class="mt-3 text-[var(--color-muted)]"><strong>Goals and achievement:</strong> {project.goals}</p>
               </div>
             </article>
           ))}
@@ -308,10 +318,10 @@ const secondaryButton =
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {skills.map((group) => (
             <article class={`${card} p-5`}>
-              <h3 class="text-xl font-extrabold leading-tight text-[#18211f]">{group.title}</h3>
+              <h3 class="text-xl font-extrabold leading-tight text-[var(--color-text)]">{group.title}</h3>
               <ul class="mt-4 flex flex-wrap gap-2">
                 {group.items.map((skill) => (
-                  <li class="rounded-full border border-[#d9e2de] bg-[#eff4f1] px-3 py-1 text-sm font-extrabold text-[#5b6763]">
+                  <li class="rounded-full border border-[var(--color-line)] bg-[var(--color-surface-strong)] px-3 py-1 text-sm font-extrabold text-[var(--color-muted)]">
                     {skill}
                   </li>
                 ))}
@@ -322,26 +332,26 @@ const secondaryButton =
       </div>
     </section>
 
-    <section id="contact" class={`${section} bg-[#18211f] text-white`}>
+    <section id="contact" class={`${section} bg-[var(--color-contact-bg)] text-[var(--color-contact-text)]`}>
       <div class={`${shell} grid items-center gap-8 lg:grid-cols-[1fr_0.55fr]`}>
         <div>
-          <p class={`${eyebrow} border-white/20`}>Get In Touch</p>
-          <h2 class="max-w-3xl text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+          <p class={`${eyebrow} border-[var(--color-contact-line)]`}>Get In Touch</p>
+          <h2 class="max-w-3xl text-3xl font-extrabold leading-tight text-[var(--color-contact-text)] sm:text-4xl lg:text-5xl">
             Have an idea, role, or collaboration in mind?
           </h2>
-          <p class="mt-5 max-w-2xl text-white/70">
+          <p class="mt-5 max-w-2xl text-[var(--color-contact-muted)]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Send a quick message and I will reply with the next
             practical step.
           </p>
         </div>
 
-        <div class="grid gap-4 rounded-lg border border-white/20 bg-white/10 p-5" aria-label="Contact information">
+        <div class="grid gap-4 rounded-lg border border-[var(--color-contact-line)] bg-[var(--color-contact-panel)] p-5" aria-label="Contact information">
           <a class={primaryButton} href="/resume-placeholder.pdf" download>Download Resume PDF</a>
-          <a class="font-extrabold text-white underline decoration-2 underline-offset-4" href="mailto:hello@example.com">
+          <a class="font-extrabold text-[var(--color-contact-text)] underline decoration-2 underline-offset-4" href="mailto:hello@example.com">
             hello@example.com
           </a>
           <a
-            class="font-extrabold text-white underline decoration-2 underline-offset-4"
+            class="font-extrabold text-[var(--color-contact-text)] underline decoration-2 underline-offset-4"
             href="https://wa.me/6281234567890"
             target="_blank"
             rel="noreferrer"
@@ -353,7 +363,7 @@ const secondaryButton =
     </section>
   </main>
 
-  <footer class="border-t border-[#d9e2de] px-4 py-6 text-center text-[#5b6763]">
+  <footer class="border-t border-[var(--color-line)] px-4 py-6 text-center text-[var(--color-muted)]">
     <p>Built with Astro and Tailwind CSS. Static, focused, and ready to customize.</p>
   </footer>
 </Layout>

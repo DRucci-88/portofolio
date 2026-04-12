@@ -5,6 +5,64 @@
 }
 
 @layer base {
+  :root {
+    color-scheme: light;
+    --color-bg: #f7f1e8;
+    --color-bg-rgb: 247 241 232;
+    --color-surface: #fffaf2;
+    --color-surface-muted: #f3eadc;
+    --color-surface-strong: #eadcc8;
+    --color-text: #231915;
+    --color-muted: #6f6258;
+    --color-line: #dccbb7;
+    --color-brand: #7a4a2a;
+    --color-brand-strong: #4e3426;
+    --color-accent: #b85c38;
+    --color-accent-soft: #e7d9c7;
+    --color-focus: #d8a742;
+    --color-inverse: #231915;
+    --color-inverse-text: #ffffff;
+    --color-inverse-muted: rgb(255 255 255 / 72%);
+    --color-inverse-line: rgb(255 255 255 / 18%);
+    --color-inverse-panel: rgb(255 255 255 / 8%);
+    --color-contact-bg: #efe3d4;
+    --color-contact-text: #231915;
+    --color-contact-muted: #6f6258;
+    --color-contact-line: #d7c2aa;
+    --color-contact-panel: #fffaf2;
+    --shadow-card: 0 10px 28px rgb(65 42 26 / 9%);
+    --shadow-lift: 0 18px 42px rgb(65 42 26 / 13%);
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --color-bg: #160f0c;
+    --color-bg-rgb: 22 15 12;
+    --color-surface: #201713;
+    --color-surface-muted: #2a1f1a;
+    --color-surface-strong: #332620;
+    --color-text: #f5eadb;
+    --color-muted: #c9b8a4;
+    --color-line: #4a382f;
+    --color-brand: #9c6238;
+    --color-brand-strong: #d19a62;
+    --color-accent: #e5a15d;
+    --color-accent-soft: #3a2a21;
+    --color-focus: #f0c36a;
+    --color-inverse: #f5eadb;
+    --color-inverse-text: #160f0c;
+    --color-inverse-muted: rgb(22 15 12 / 74%);
+    --color-inverse-line: rgb(22 15 12 / 16%);
+    --color-inverse-panel: rgb(22 15 12 / 7%);
+    --color-contact-bg: #120c09;
+    --color-contact-text: #f5eadb;
+    --color-contact-muted: rgb(245 234 219 / 72%);
+    --color-contact-line: rgb(245 234 219 / 16%);
+    --color-contact-panel: rgb(245 234 219 / 7%);
+    --shadow-card: 0 14px 34px rgb(0 0 0 / 28%);
+    --shadow-lift: 0 22px 52px rgb(0 0 0 / 34%);
+  }
+
   * {
     box-sizing: border-box;
   }
@@ -15,11 +73,14 @@
 
   body {
     margin: 0;
-    background: #f6f8f7;
-    color: #18211f;
+    background: var(--color-bg);
+    color: var(--color-text);
     font-family: var(--font-sans);
     line-height: 1.6;
     text-rendering: optimizeSpeed;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease;
   }
 
   img {
@@ -35,7 +96,7 @@
 
   a:focus-visible,
   button:focus-visible {
-    outline: 3px solid #f2cf63;
+    outline: 3px solid var(--color-focus);
     outline-offset: 4px;
   }
 
