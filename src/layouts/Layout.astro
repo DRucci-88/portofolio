@@ -1,16 +1,29 @@
 ---
 import '../styles/global.css'
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Portfolio | Software Developer',
+  description = 'A fast, static portfolio website built with Astro.',
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6f8f7" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>{title}</title>
   </head>
   <body>
     <slot />
