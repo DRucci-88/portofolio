@@ -1,0 +1,78 @@
+---
+import { shell, eyebrow, heading, section, card } from "@/components/style";
+
+const experiences = [
+  {
+    period: "Jan 2025 - Present",
+    role: "Frontend Developer",
+    company: "Placeholder Studio",
+    detail:
+      "Built landing pages, dashboards, and reusable UI components with a focus on accessibility and fast delivery.",
+  },
+  {
+    period: "Aug 2024 - Dec 2024",
+    role: "Web Developer Intern",
+    company: "Example Digital Lab",
+    detail:
+      "Supported client projects, converted designs into responsive pages, and improved API integration workflows.",
+  },
+  {
+    period: "Feb 2023 - Jul 2024",
+    role: "Freelance Developer",
+    company: "Independent Projects",
+    detail:
+      "Delivered portfolio sites, admin pages, and small business websites using modern JavaScript tooling.",
+  },
+];
+---
+
+<section id="experience" class={`${section} motion-reveal`}>
+  <div class={shell}>
+    <div class="mb-8">
+      <p class={eyebrow}>Work Experience</p>
+      <h2 class={heading}>A timeline of steady practice and shipped work.</h2>
+    </div>
+
+    <div
+      class="motion-rail relative grid gap-6 pl-8 before:absolute before:left-3 before:top-0 before:h-full before:w-[3px] before:bg-[var(--color-brand)] md:gap-8 md:pl-0 md:before:left-1/2 md:before:-translate-x-1/2"
+    >
+      {
+        experiences.map((item, index) => {
+          const isLeft = index % 2 === 0;
+          const cardPosition = isLeft
+            ? "md:col-start-1 md:text-right"
+            : "md:col-start-3";
+          const connectorPosition = isLeft
+            ? "md:right-1/2 md:mr-2"
+            : "md:left-1/2 md:ml-2";
+
+          return (
+            <article class="relative grid items-center gap-4 md:grid-cols-[1fr_64px_1fr]">
+              <div class={`${card} ${cardPosition} p-5`}>
+                <time class="font-black text-[var(--color-brand-strong)]">
+                  {item.period}
+                </time>
+                <h3 class="mt-3 text-xl font-extrabold leading-tight text-[var(--color-text)]">
+                  {item.role}
+                </h3>
+                <p class="mt-2 font-extrabold text-[var(--color-text)]">
+                  {item.company}
+                </p>
+                <p class="mt-2 text-[var(--color-muted)]">{item.detail}</p>
+              </div>
+
+              <span
+                class="motion-dot absolute -left-[31px] top-6 h-4 w-4 rounded-full border-[3px] border-[var(--color-bg)] bg-[var(--color-accent)] md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
+                aria-hidden="true"
+              />
+              <span
+                class={`hidden md:block md:absolute md:top-1/2 md:h-[3px] md:w-8 md:-translate-y-1/2 md:bg-[var(--color-brand)] ${connectorPosition}`}
+                aria-hidden="true"
+              />
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

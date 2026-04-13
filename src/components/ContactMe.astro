@@ -1,0 +1,88 @@
+---
+import { shell, eyebrow, section } from "@/components/style";
+---
+
+<section
+  id="contact"
+  class={`${section} motion-reveal bg-[var(--color-contact-bg)] text-[var(--color-contact-text)]`}
+>
+  <div class={`${shell} grid items-start gap-8 lg:grid-cols-[1fr_420px]`}>
+    <div class="max-w-3xl">
+      <p class={`${eyebrow} border-[var(--color-contact-line)]`}>
+        Get In Touch
+      </p>
+      <h2
+        class="max-w-3xl text-3xl font-extrabold leading-tight text-[var(--color-contact-text)] sm:text-4xl"
+      >
+        Have an idea, role, or collaboration in mind?
+      </h2>
+      <p
+        class="mt-5 max-w-2xl text-base text-[var(--color-contact-muted)] sm:text-lg"
+      >
+        Send a short message about what you want to build, improve, or launch. I
+        will reply with a clear next step and a practical way to move forward.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2">
+        <span
+          class="rounded-full border border-[var(--color-contact-line)] bg-[var(--color-contact-panel)] px-3 py-1 text-sm font-extrabold"
+        >
+          Open for freelance
+        </span>
+        <span
+          class="rounded-full border border-[var(--color-contact-line)] bg-[var(--color-contact-panel)] px-3 py-1 text-sm font-extrabold"
+        >
+          Remote friendly
+        </span>
+      </div>
+    </div>
+
+    <div
+      class="grid gap-4 rounded-lg border border-[var(--color-contact-line)] bg-[var(--color-contact-panel)] p-4 shadow-[var(--shadow-card)] sm:p-5"
+      aria-label="Contact information"
+    >
+      <a
+        class="motion-sheen inline-flex min-h-10 w-full items-center justify-center rounded-lg border border-transparent bg-[var(--color-brand)] px-3 py-2 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-brand-strong)] sm:min-h-11 sm:px-4 sm:py-3 sm:text-base"
+        href="/resume-placeholder.pdf"
+        download
+      >
+        Download Resume PDF
+      </a>
+
+      <a
+        class="rounded-lg border border-[var(--color-contact-line)] px-4 py-3 transition hover:bg-[var(--color-surface-strong)]"
+        href="mailto:hello@example.com"
+      >
+        <span
+          class="block text-xs font-black uppercase tracking-wide text-[var(--color-contact-muted)]"
+          >Email</span
+        >
+        <span
+          class="mt-1 block font-extrabold text-[var(--color-contact-text)] underline decoration-2 underline-offset-4"
+        >
+          hello@example.com
+        </span>
+      </a>
+
+      <a
+        class="rounded-lg border border-[var(--color-contact-line)] px-4 py-3 transition hover:bg-[var(--color-surface-strong)]"
+        href="https://wa.me/6281234567890"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <span
+          class="block text-xs font-black uppercase tracking-wide text-[var(--color-contact-muted)]"
+          >WhatsApp</span
+        >
+        <span
+          class="mt-1 block font-extrabold text-[var(--color-contact-text)] underline decoration-2 underline-offset-4"
+        >
+          +62 812 3456 7890
+        </span>
+      </a>
+
+      <p class="text-sm text-[var(--color-contact-muted)]">
+        Prefer email for project briefs, WhatsApp for quick availability checks.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+---
+import { shell, eyebrow, heading, section, card } from "@/components/style";
+
+const stats = [
+  { value: "3+", label: "Years learning and building" },
+  { value: "18", label: "Projects shipped" },
+  { value: "9", label: "Core tools used weekly" },
+  { value: "100%", label: "Static-first delivery" },
+];
+
+const descriptors = [
+  {
+    title: "Product-minded",
+    text: "I connect technical choices with the user outcome, business goal, and long-term maintainability.",
+  },
+  {
+    title: "Performance-aware",
+    text: "I prefer lean interfaces, clear data flow, and static rendering whenever the experience allows it.",
+  },
+  {
+    title: "Team-friendly",
+    text: "I write readable code, document decisions, and keep communication practical from planning to release.",
+  },
+];
+---
+
+<section
+  id="about"
+  class={`${section} motion-reveal bg-[var(--color-surface)]`}
+>
+  <div class={shell}>
+    <div class="mb-8">
+      <p class={eyebrow}>About Me</p>
+      <h2 class={heading}>Curious builder, practical problem solver.</h2>
+    </div>
+
+    <div class="grid items-start gap-8 lg:grid-cols-[1fr_0.8fr]">
+      <div class="text-lg text-[var(--color-muted)]">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+          viverra, sem in porta elementum, erat massa eleifend turpis, sed
+          dictum risus mi vitae arcu. I enjoy shaping digital products from
+          rough notes into polished, maintainable releases.
+        </p>
+        <p class="mt-4">
+          Praesent tincidunt, justo at posuere feugiat, erat mi dapibus mi, non
+          tempor lectus metus at nisl. I care about good naming, simple
+          architecture, accessible interfaces, and performance that users can
+          actually feel.
+        </p>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2" aria-label="Developer stats">
+        {
+          stats.map((stat) => (
+            <article class={`${card} min-h-32 p-5`}>
+              <strong class="block text-4xl leading-none text-[var(--color-accent)]">
+                {stat.value}
+              </strong>
+              <span class="mt-3 block font-bold text-[var(--color-muted)]">
+                {stat.label}
+              </span>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="mt-4 grid gap-4 md:grid-cols-3">
+      {
+        descriptors.map((item) => (
+          <article class={`${card} bg-[var(--color-surface-muted)] p-5`}>
+            <h3 class="text-xl font-extrabold leading-tight text-[var(--color-text)]">
+              {item.title}
+            </h3>
+            <p class="mt-3 text-[var(--color-muted)]">{item.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,124 @@
+---
+import { shell } from "@/components/style";
+
+const navItems = [
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<header
+  class="sticky top-0 z-10 border-b border-[var(--color-line)] bg-[rgb(var(--color-bg-rgb)/0.9)] backdrop-blur-md"
+>
+  <nav
+    class={`${shell} flex min-h-[72px] items-center justify-between gap-4 py-4`}
+    aria-label="Main navigation"
+  >
+    <a
+      class="text-lg font-extrabold text-[var(--color-text)]"
+      href="#home"
+      aria-label="Go to home">Portfolio.</a
+    >
+    <div class="hidden items-center justify-end gap-1 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            class="rounded-md px-3 py-2 text-sm font-bold text-[var(--color-muted)] hover:bg-[var(--color-surface-strong)] hover:text-[var(--color-text)]"
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <button
+        class="inline-flex min-h-10 items-center gap-2 rounded-lg border border-[var(--color-line)] bg-[var(--color-surface)] px-3 py-2 text-sm font-extrabold text-[var(--color-text)] transition hover:bg-[var(--color-surface-strong)]"
+        type="button"
+        data-theme-toggle
+        aria-pressed="false"
+      >
+        <span
+          class="h-2.5 w-2.5 rounded-full bg-[var(--color-accent)]"
+          aria-hidden="true"></span>
+        <span>Theme:</span>
+        <span data-theme-label>Light</span>
+      </button>
+    </div>
+    <button
+      class="inline-flex min-h-10 items-center gap-2 rounded-lg border border-[var(--color-line)] bg-[var(--color-surface)] px-3 py-2 text-sm font-extrabold text-[var(--color-text)] transition hover:bg-[var(--color-surface-strong)] md:hidden"
+      type="button"
+      data-nav-open
+      aria-controls="mobile-navigation"
+      aria-expanded="false"
+    >
+      <span class="grid gap-1" aria-hidden="true">
+        <span class="block h-0.5 w-5 rounded-full bg-[var(--color-text)]"
+        ></span>
+        <span class="block h-0.5 w-5 rounded-full bg-[var(--color-text)]"
+        ></span>
+        <span class="block h-0.5 w-5 rounded-full bg-[var(--color-text)]"
+        ></span>
+      </span>
+      Menu
+    </button>
+  </nav>
+</header>
+
+<div
+  class="fixed inset-0 z-50 hidden md:hidden"
+  id="mobile-navigation"
+  data-nav-drawer
+>
+  <button
+    class="absolute inset-0 bg-[rgb(0_0_0/0.45)]"
+    type="button"
+    data-nav-close
+    aria-label="Close navigation"></button>
+  <aside
+    class="absolute right-0 top-0 flex h-full w-[min(360px,calc(100%_-_2rem))] flex-col border-l border-[var(--color-line)] bg-[var(--color-surface)] p-5 text-[var(--color-text)] shadow-[var(--shadow-lift)]"
+    aria-label="Mobile navigation"
+    data-nav-panel
+  >
+    <div class="flex items-center justify-between gap-4">
+      <a class="text-lg font-extrabold" href="#home" data-nav-link>Portfolio.</a
+      >
+      <button
+        class="inline-flex min-h-10 items-center justify-center rounded-lg border border-[var(--color-line)] px-3 py-2 font-extrabold hover:bg-[var(--color-surface-strong)]"
+        type="button"
+        data-nav-close
+        aria-label="Close navigation"
+      >
+        Close
+      </button>
+    </div>
+
+    <div class="mt-8 grid gap-2">
+      {
+        navItems.map((item) => (
+          <a
+            class="rounded-lg px-3 py-3 text-lg font-extrabold text-[var(--color-text)] hover:bg-[var(--color-surface-strong)]"
+            href={item.href}
+            data-nav-link
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <button
+      class="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[var(--color-line)] bg-[var(--color-surface-strong)] px-4 py-3 font-extrabold text-[var(--color-text)]"
+      type="button"
+      data-theme-toggle
+      aria-pressed="false"
+    >
+      <span
+        class="h-2.5 w-2.5 rounded-full bg-[var(--color-accent)]"
+        aria-hidden="true"></span>
+      <span>Theme:</span>
+      <span data-theme-label>Light</span>
+    </button>
+  </aside>
+</div>

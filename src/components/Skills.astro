@@ -1,0 +1,52 @@
+---
+import { shell, eyebrow, heading, section, card } from "@/components/style";
+
+const skills = [
+  {
+    title: "Programming Languages",
+    items: ["JavaScript", "TypeScript", "PHP", "Python", "SQL"],
+  },
+  {
+    title: "Frameworks",
+    items: ["Astro", "React", "Next.js", "Laravel", "Express"],
+  },
+  {
+    title: "Databases",
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
+  },
+  {
+    title: "Tools",
+    items: ["Git", "Docker", "Vercel", "Figma", "Postman"],
+  },
+];
+---
+
+<section id="skills" class={`${section} motion-reveal`}>
+  <div class={shell}>
+    <div class="mb-8">
+      <p class={eyebrow}>Technical Skills</p>
+      <h2 class={heading}>
+        The tools I use to design, build, and ship dependable products.
+      </h2>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {
+        skills.map((group) => (
+          <article class={`${card} p-5`}>
+            <h3 class="text-xl font-extrabold leading-tight text-[var(--color-text)]">
+              {group.title}
+            </h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {group.items.map((skill) => (
+                <li class="rounded-full border border-[var(--color-line)] bg-[var(--color-surface-strong)] px-3 py-1 text-sm font-extrabold text-[var(--color-muted)]">
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
