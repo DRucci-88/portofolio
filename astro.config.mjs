@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://github.com/DRucci-88',
+  base: '/portofolio',
   vite: {
     resolve: {
       alias: {
