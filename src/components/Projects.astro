@@ -1,38 +1,74 @@
 ---
 import { shell, eyebrow, heading, section, card } from "@/components/style";
 
-const projects = [
+// "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=70",
+// "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=70",
+// "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=70",
+const projects: Array<{
+  product: string;
+  title: string;
+  tools: string[];
+  description: string;
+  goals: string[];
+  image: string;
+}> = [
   {
-    title: "Commerce Insight",
-    tools: "Astro, TypeScript, Tailwind CSS",
+    product: "Manapay",
+    title: "Payment Gateway / Merchant Aggregator (MAIN PROJECT)",
+    tools: ["NestJS", "Prisma", "PostgreSQL", "Docker", "React"],
     description:
-      "A fast product analytics page for tracking catalog performance, campaign lift, and conversion signals.",
-    goals:
-      "Reduced layout weight, improved content clarity, and prepared the page for SEO-focused deployment.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=70",
+      "Built a fintech platform enabling merchants to integrate payment services through secure APIs and microservices architecture.",
+    goals: [
+      "Designed secure API integration using JWT, HMAC, and webhook validation",
+      "Implemented payment workflows (purchase, withdrawal, disbursement, settlement)",
+      "Built merchant onboarding system with credential provisioning",
+      "Enabled multi-provider payment integration (QRIS & payout systems)",
+    ],
+    image: "MANAPAY.png",
   },
   {
-    title: "TeamFlow Dashboard",
-    tools: "React, Node.js, PostgreSQL",
+    product: "BAIS Web",
+    title: "Legacy System Modernization",
+    tools: ["Next.js", "Spring Boot", "WebLogic", "Oracle Tuxedo"],
     description:
-      "A project operations dashboard with task health, sprint notes, and team availability snapshots.",
-    goals:
-      "Created a cleaner decision surface for project leads and simplified weekly reporting.",
+      "Migrated legacy desktop-based system (Tobesoft XPlatform) into a scalable web-based enterprise platform.",
+    goals: [
+      "Integrated modern web apps with legacy Tuxedo systems via WebLogic (WTC)",
+      "Designed service layer bridging HTTP APIs with legacy string-based protocol",
+      "Contributed to scalable architecture for enterprise system modernization",
+    ],
     image:
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=70",
+      "BAIS.svg",
   },
   {
-    title: "LearnTrack API",
-    tools: "Laravel, MySQL, Redis",
+    product: "PMFTC",
+    title: "High-Performance Reporting System",
+    tools: ["Laravel", "MySQL"],
     description:
-      "A learning progress API for course enrollment, lesson completion, certificates, and admin review.",
-    goals:
-      "Improved response consistency, introduced cache-friendly endpoints, and documented integration flows.",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=70",
+      "Optimized database queries handling millions of records for enterprise reporting system.",
+    goals: [
+      "Reduced query execution time through indexing and query restructuring",
+      "Improved performance for large-scale data processing",
+      "Enhanced reporting efficiency and system reliability",
+    ],
+    image: "PMFTC.jpg",
+  },
+  {
+    product: "Kualiva",
+    title: "Location-Based Merchant Platform",
+    tools: ["NestJS", "Prisma", "PostgreSQL", "MongoDB", "Flutter"],
+    description:
+      "Developed a geolocation-based platform for discovering merchants with advanced filtering and user interaction features.",
+    goals: [
+      "Implemented location-based search (distance, rating, price)",
+      "Built user engagement features (reviews, likes, collections)",
+      "Designed scalable backend using microservices architecture",
+    ],
+    image: "KUALIVA.png",
   },
 ];
+
+const [featuredProject, ...otherProjects] = projects;
 ---
 
 <section
@@ -47,34 +83,112 @@ const projects = [
       </h2>
     </div>
 
-    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {
-        projects.map((project) => (
-          <article
-            class={`${card} overflow-hidden bg-[var(--color-surface-muted)]`}
-          >
+    {
+      featuredProject && (
+        <article
+          class={`${card} motion-card mb-5 overflow-hidden bg-[var(--color-surface-muted)] lg:grid lg:grid-cols-[minmax(280px,0.82fr)_1.18fr]`}
+        >
+          <div class="grid min-h-[240px] place-items-center border-b border-[var(--color-line)] bg-[var(--color-surface)] p-6 sm:min-h-[300px] lg:min-h-full lg:border-b-0 lg:border-r lg:p-8">
             <img
-              class="aspect-[3/2] w-full object-cover"
-              src={project.image}
-              alt=""
-              width="900"
-              height="600"
+              class="h-full max-h-[240px] w-full object-contain object-center sm:max-h-[300px] lg:max-h-[340px]"
+              src={featuredProject.image}
+              alt={`${featuredProject.product} project preview`}
+              width="1100"
+              height="720"
               loading="lazy"
               decoding="async"
             />
-            <div class="p-5">
-              <p class="mb-3 text-sm font-black text-[var(--color-accent)]">
-                {project.tools}
+          </div>
+
+          <div class="p-5 sm:p-6 lg:p-7">
+            <p class="text-sm font-black text-[var(--color-accent)]">
+              Featured Project
+            </p>
+            <p class="mt-2 text-base font-extrabold text-[var(--color-brand-strong)]">
+              {featuredProject.product}
+            </p>
+            <h3 class="mt-2 text-2xl font-extrabold leading-tight text-[var(--color-text)] sm:text-3xl">
+              {featuredProject.title}
+            </h3>
+            <p class="mt-4 text-[var(--color-muted)]">
+              {featuredProject.description}
+            </p>
+
+            <ul class="mt-5 flex flex-wrap gap-2" aria-label={`${featuredProject.product} tools`}>
+              {featuredProject.tools.map((tool) => (
+                <li class="rounded-full border border-[var(--color-line)] bg-[var(--color-surface-strong)] px-3 py-1 text-sm font-extrabold text-[var(--color-muted)]">
+                  {tool}
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-5">
+              <p class="font-extrabold text-[var(--color-text)]">
+                Goals and achievement
               </p>
-              <h3 class="text-xl font-extrabold leading-tight text-[var(--color-text)]">
+              <ul class="mt-3 grid gap-2 text-sm text-[var(--color-muted)] sm:text-base">
+                {featuredProject.goals.map((goal) => (
+                  <li class="flex gap-2">
+                    <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
+                    <span>{goal}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      )
+    }
+
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {
+        otherProjects.map((project) => (
+          <article
+            class={`${card} motion-card flex flex-col overflow-hidden bg-[var(--color-surface-muted)]`}
+          >
+            <div class="grid min-h-[180px] place-items-center border-b border-[var(--color-line)] bg-[var(--color-surface)] p-5 sm:min-h-[210px]">
+              <img
+                class="h-full max-h-[170px] w-full object-contain object-center sm:max-h-[190px]"
+                src={project.image}
+                alt={`${project.product} project preview`}
+                width="900"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="p-5">
+              <p class="text-sm font-black text-[var(--color-accent)]">
+                {project.product}
+              </p>
+              <h3 class="mt-2 text-xl font-extrabold leading-tight text-[var(--color-text)]">
                 {project.title}
               </h3>
               <p class="mt-3 text-[var(--color-muted)]">
                 {project.description}
               </p>
-              <p class="mt-3 text-[var(--color-muted)]">
-                <strong>Goals and achievement:</strong> {project.goals}
-              </p>
+
+              <ul class="mt-4 flex flex-wrap gap-2" aria-label={`${project.product} tools`}>
+                {project.tools.map((tool) => (
+                  <li class="rounded-full border border-[var(--color-line)] bg-[var(--color-surface-strong)] px-3 py-1 text-xs font-extrabold text-[var(--color-muted)]">
+                    {tool}
+                  </li>
+                ))}
+              </ul>
+
+              <div class="mt-4">
+                <p class="text-sm font-extrabold text-[var(--color-text)]">
+                  Goals and achievement
+                </p>
+                <ul class="mt-2 grid gap-1.5 text-sm text-[var(--color-muted)]">
+                  {project.goals.map((goal) => (
+                    <li class="flex gap-2">
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
+                      <span>{goal}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </article>
         ))

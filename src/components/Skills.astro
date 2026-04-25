@@ -4,19 +4,29 @@ import { shell, eyebrow, heading, section, card } from "@/components/style";
 const skills = [
   {
     title: "Programming Languages",
-    items: ["JavaScript", "TypeScript", "PHP", "Python", "SQL"],
+    items: ["JavaScript", "TypeScript", "PHP", "JAVA"],
   },
   {
     title: "Frameworks",
-    items: ["Astro", "React", "Next.js", "Laravel", "Express"],
+    items: ["Nest.JS", "React", "Next.js", "Laravel", "Astro", "Spring Boot"],
   },
   {
     title: "Databases",
-    items: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
+    items: ["PostgreSQL", "MySQL", ],
   },
   {
-    title: "Tools",
-    items: ["Git", "Docker", "Vercel", "Figma", "Postman"],
+    title: "Architecture & Concepts",
+    items: [
+      "Microservices",
+      "REST API",
+      "API Security (JWT, HMAC)",
+      "Webhook",
+      "System Integration",
+    ],
+  },
+  {
+    title: "Tools & Platform",
+    items: ["Docker", "Git", "Postman", "Swagger", "WebLogic"],
   },
 ];
 ---
@@ -25,9 +35,14 @@ const skills = [
   <div class={shell}>
     <div class="mb-8">
       <p class={eyebrow}>Technical Skills</p>
-      <h2 class={heading}>
-        The tools I use to design, build, and ship dependable products.
+      <h2 class="max-w-4xl text-3xl font-extrabold leading-tight text-[var(--color-text)] sm:text-4xl lg:text-5xl">
+        Technologies I use to build scalable backend systems and fintech
+        platforms.
       </h2>
+      <p class="mt-4 max-w-3xl text-lg font-bold leading-relaxed text-[var(--color-muted)] sm:text-xl">
+        Payment Systems, Merchant Integration, Settlement & Reconciliation,
+        Legacy System Integration
+      </p>
     </div>
 
     <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

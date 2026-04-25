@@ -2,24 +2,25 @@
 import { shell, eyebrow, heading, section, card } from "@/components/style";
 
 const stats = [
-  { value: "3+", label: "Years learning and building" },
-  { value: "18", label: "Projects shipped" },
-  { value: "9", label: "Core tools used weekly" },
-  { value: "100%", label: "Static-first delivery" },
+  { value: "2+ Years", label: "Building fintech & enterprise systems" },
+  { value: "5+ Systems", label: "Payment & enterprise platforms" },
+  { value: "Secure APIs", label: "JWT, HMAC, Webhook integration" },
+  // { value: "High-scale", label: "Data & performance optimization" },
+  { value: "Microservices", label: "Architecture & API design" },
 ];
 
 const descriptors = [
   {
-    title: "Product-minded",
-    text: "I connect technical choices with the user outcome, business goal, and long-term maintainability.",
+    title: "System-oriented",
+    text: "I design backend systems with scalability, reliability, and real-world usage in mind, not just features.",
   },
   {
-    title: "Performance-aware",
-    text: "I prefer lean interfaces, clear data flow, and static rendering whenever the experience allows it.",
+    title: "Performance-driven",
+    text: "I optimize queries, data flow, and services to handle large-scale data and high-load systems efficiently.",
   },
   {
-    title: "Team-friendly",
-    text: "I write readable code, document decisions, and keep communication practical from planning to release.",
+    title: "Production-focused",
+    text: "I write clean, maintainable code and build systems that are ready for real users, monitoring, and scaling.",
   },
 ];
 ---
@@ -31,22 +32,25 @@ const descriptors = [
   <div class={shell}>
     <div class="mb-8">
       <p class={eyebrow}>About Me</p>
-      <h2 class={heading}>Curious builder, practical problem solver.</h2>
+      <h2 class={heading}>Backend engineer, system thinker, problem solver.</h2>
     </div>
 
     <div class="grid items-start gap-8 lg:grid-cols-[1fr_0.8fr]">
       <div class="text-lg text-[var(--color-muted)]">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-          viverra, sem in porta elementum, erat massa eleifend turpis, sed
-          dictum risus mi vitae arcu. I enjoy shaping digital products from
-          rough notes into polished, maintainable releases.
+          I build backend systems that power real-world applications, from
+          payment gateways and merchant integrations to enterprise platforms.
+        </p>
+
+        <p class="mt-4">
+          My focus is on designing scalable architectures, secure APIs, and
+          reliable data flows that can handle real transactions and real users.
+          I enjoy working on complex systems, especially where modern
+          applications need to integrate with legacy infrastructure.
         </p>
         <p class="mt-4">
-          Praesent tincidunt, justo at posuere feugiat, erat mi dapibus mi, non
-          tempor lectus metus at nisl. I care about good naming, simple
-          architecture, accessible interfaces, and performance that users can
-          actually feel.
+          I care about clean architecture, system performance, and building
+          services that are maintainable, observable, and production-ready.
         </p>
       </div>
 
@@ -54,7 +58,7 @@ const descriptors = [
         {
           stats.map((stat) => (
             <article class={`${card} min-h-32 p-5`}>
-              <strong class="block text-4xl leading-none text-[var(--color-accent)]">
+              <strong class="block text-2xl leading-none text-[var(--color-accent)]">
                 {stat.value}
               </strong>
               <span class="mt-3 block font-bold text-[var(--color-muted)]">
