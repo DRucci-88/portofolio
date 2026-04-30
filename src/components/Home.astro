@@ -15,6 +15,9 @@ const socials = [
   },
   { label: "Instagram", href: "https://www.instagram.com/ewarucci" },
 ];
+
+// const myPhotoSrc = '/portofolio/Engineer in the code chaos.png';
+const myPhotoSrc = '/portofolio/myphoto.jpeg'
 ---
 
 <section id="home" class={`${section} relative overflow-hidden pt-12 md:pt-20`}>
@@ -76,7 +79,7 @@ const socials = [
     >
       <img
         class="motion-float aspect-[4/3] w-full rounded-lg object-cover shadow-[var(--shadow-lift)] lg:aspect-[4/5]"
-        src="/portofolio/Engineer in the code chaos.png"
+        src={myPhotoSrc}
         alt="Developer desk with laptop and code editor"
         width="900"
         height="1125"
